@@ -1,0 +1,6 @@
+Needed for Yubikey Setup:
+	yubikey-personalization
+	libpam-yubico
+
+Needed for Utils:
+	linux-base

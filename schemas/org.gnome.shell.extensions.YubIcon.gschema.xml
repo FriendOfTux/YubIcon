@@ -1,0 +1,35 @@
+<?xml version="2.0" encoding="UTF-8"?>
+<schemalist>
+	<schema id="org.gnome.shell.extensions.YubIcon"
+		path="/org/gnome/shell/extensions/YubIcon/">
+
+	<key type="b" name="auth-state">
+		<default>false</default>
+		<description>Status of Yubikey in /etc/pam.d/*-auth</description>
+	</key>	
+
+	<key type="b" name="gdm-state">
+		<default>false</default>
+		<description>Status of Yubikey in /etc/pam.d/gdm-password</description>
+	</key>	
+
+	<key type="b" name="display-auth">
+		<default>true</default>
+		<description>Display Authentication Options</description>
+	</key>
+
+	<key type="b" name="display-gdm">
+		<default>true</default>
+		<description>Display GDM Options</description>
+	</key>
+
+	<key type="b" name="display-tools">
+		<default>true</default>
+		<description>Display external Tools</description>
+	</key>
+	
+
+	</schema>
+
+</schemalist>
+

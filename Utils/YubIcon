@@ -1,0 +1,45 @@
+#!/bin/bash
+
+###################################YUBIKEY CONFIGURATION#########################
+    # cli-tool to change settings of yubikey, given a system with gdm login #
+#################################################################################
+
+#printing options
+[ $1 == "-h" ] && echo '-ar = make yubikey required for authfile
+-as = make yubikey sufficient for authfile
+-ac = make yubikey commented for authfile
+-au = make yubikey uncommented for authfile
+-gr = make yubikey required for gdm-password
+-gs = make yubikey sufficient for gdm-password
+-gc = make yubikey commented for gdm-password
+-gu = make yubikey uncommented for gdm-password' && exit
+
+#catching errors
+trap 'echo "An Error occured in Yubi!" ; exit -1' ERR
+[ $# == "0" ] && echo 'Please enter parameter' && exit
+[ ! $(id -u) -eq 0 ] && echo 'Please run this script as root!' && exit 1
+
+#getting informations about the system
+loginfile="gdm-password"
+id=$(cat /etc/*-release | grep ID_LIKE)
+[[ $id =~ "debian" ]] && authfile="common-auth"
+[[ $id =~ "arch" ]] && authfile="system-auth"
+
+#replacing content of files
+function replace {
+	echo replacing \'$1\' with \'$2\' in \'$3\'
+	sed /yubico/s/$1\ /$2\ /g < /etc/pam.d/$3 > /etc/pam.d/$3-2
+	mv /etc/pam.d/$3-2 /etc/pam.d/$3
+}
+
+#given a short parameter call the function replace(from, to, in)
+for i in "$@" ; do
+[ $i == "-as" ] && replace "required" "sufficient" $authfile
+[ $i == "-ar" ] && replace "sufficient" "required" $authfile
+[ $i == "-gs" ] && replace "required" "sufficient" $loginfile
+[ $i == "-gr" ] && replace "sufficient" "required" $loginfile
+[ $i == "-ac" ] && replace "auth" "#auth" $authfile
+[ $i == "-au" ] && replace "#auth" "auth" $authfile
+[ $i == "-gc" ] && replace "auth" "#auth" $loginfile
+[ $i == "-gu" ] && replace "#auth" "auth" $loginfile
+done

@@ -1,0 +1,10 @@
+{
+  "name": "YubIcon",
+  "description": "enable/disable yubikey/pam settings and start additional tools",
+  "uuid": "YubIcon@FriendOfTux",
+  "shell-version": [
+    "3.38"
+  ],
+  "version": 2.4,
+  "url": ""
+}

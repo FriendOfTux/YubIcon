@@ -1,0 +1,22 @@
+#!/bin/bash
+
+loginfile="gdm-password"				#gdm-password is the file for login conf
+id=$(grep ID_LIKE /etc/*-release)			#/etc/*-release contains distribution
+[[ $id =~ "debian" ]] && authfile="common-auth"		#for debian common-auth is the authentication-file
+[[ $id =~ "arch" ]] && authfile="system-auth"		#for arch it is system-auth
+
+case $1 in						#given a long parameter get a short parameter
+	auth_req)	param="-ar" ;;
+	auth_suf)	param="-as" ;;
+	auth_com)	param="-ac" ;;
+	auth_uncom)	param="-au" ;;
+	gdm_req)	param="-gr" ;;
+	gdm_suf)	param="-gs" ;;
+	gdm_com)	param="-gc" ;;
+	gdm_uncom)	param="-gu" ;;
+	auth_switch)	[[ $(grep yubi /etc/pam.d/$authfile) =~ "#" ]] && param="-au" || param="-ac"	;; #if the line starts with # uncomment
+	gdm_switch)	[[ $(grep yubi /etc/pam.d/$loginfile) =~ "#" ]] && param="-gu" || param="-gc"	   #else put # before the line (toggle)
+esac
+
+[ -z $param ] && exit					#ask user for permission to run script as superuser
+pkexec ~/.local/share/gnome-shell/extensions/YubIcon@FriendOfTux/Utils/YubIcon $param
