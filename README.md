@@ -11,7 +11,7 @@ to authenticate. The files I used are "system-auth" on Arch, \
 The extension also allows you to launch "KeePassXC", "Yubico Authenticator" \
 and the "Yubikey Personalization Tool" if one of them is installed.
 
-![YubIcon.png](https://raw.githubusercontent.com/FriendOfTux/YubIcon/main/YubIcon.png)
+![YubIcon.png](https://raw.githubusercontent.com/FriendOfTux/YubIcon/main/img/extension.png)
 
 BUGS: 
 
