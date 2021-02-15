@@ -1,6 +1,8 @@
-1.	move extension to ~/.local/share/gnome-shell/extensions
+1.	download the extension by executing 'git clone https://github.com/FriendOfTux/YubIcon'
 
-2.	compile schema by executing 'glib-compile-schemas schemas' in the extensions folder
+2.	move extension folder to '~/.local/share/gnome-shell/extensions/YubIcon@FriendOfTux'
 
-3.1	restart the gnome shell / reboot the system
-3.2	start the extension from the gnome-extension manager
+3.	compile schema by executing 'glib-compile-schemas schemas' in the extensions folder
+
+4.1	restart the gnome shell / reboot the system
+4.2	start the extension from the gnome-extension manager
