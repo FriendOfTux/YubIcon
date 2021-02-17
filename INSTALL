@@ -4,5 +4,7 @@
 
 3.	compile schema by executing 'glib-compile-schemas schemas' in the extensions folder
 
-4.1	restart the gnome shell / reboot the system
-4.2	start the extension from the gnome-extension manager
+4.	make utils executable with 'chmod +x Utils/*' in the extensions folder
+
+5.1	restart the gnome shell / reboot the system
+5.2	start the extension from the gnome-extension manager
