@@ -21,11 +21,6 @@ set to "sufficient". This is not caused by the extension, \
 it's caused by the way the Keyring is unlocked.
 
 
-You can hide Sub-menus in the extensions' configuration, \
-but the menu will not reload until you reload the \
-Gnome shell -> no need to fix this for now
-
-
 SETUP \
 // YubiKey SETUP -> ENABLES YUBIKEY FOR PAM MODULES \
 setup/setup-key.sh
