@@ -48,35 +48,41 @@ function setMenuItems() {
     display_tools = settings.get_boolean('display-tools');
 
     if (display_auth != old_display_auth && display_auth) {
+        log(`${Me.metadata.name}: Adding Auth Menu`);
         createAuthMenu();
     }
 
     if (display_gdm != old_display_gdm && display_gdm) {
+        log(`${Me.metadata.name}: Adding GDM Menu`);
         createGdmMenu();
     }
 
     if (display_tools != old_display_tools && display_tools) {
+        log(`${Me.metadata.name}: Adding Tools Menu`);
         createToolsMenu();
     }
-
-    if (display_auth != old_display_auth && !display_auth) {
+/*
+     if (display_auth != old_display_auth && !display_auth) {
+        log(`${Me.metadata.name}: Removing Auth Menu`);
         auth_SubItem.destroy();
         auth_SubItem = null;
         auth_SubItem = new popupMenu.PopupSubMenuMenuItem('Auth Settings');
     }
 
     if (display_gdm != old_display_gdm && !display_gdm) {
+        log(`${Me.metadata.name}: Removing GDM Menu`);
         gdm_SubItem.destroy();
         gdm_SubItem = null;
         gdm_SubItem = new popupMenu.PopupSubMenuMenuItem('GDM Settings');
     }
 
     if (display_tools != old_display_tools && !display_tools) {
+        log(`${Me.metadata.name}: Removing Tools Menu`);
         tools_SubItem.destroy();
         tools_SubItem = null;
         tools_SubItem = new popupMenu.PopupSubMenuMenuItem('Launch Tools');
     }
-
+*/
     old_display_auth = display_auth;
     old_display_gdm = display_gdm;
     old_display_tools = display_tools;
