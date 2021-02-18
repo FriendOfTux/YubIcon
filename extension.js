@@ -61,28 +61,26 @@ function setMenuItems() {
         log(`${Me.metadata.name}: Adding Tools Menu`);
         createToolsMenu();
     }
-/*
+
+
      if (display_auth != old_display_auth && !display_auth) {
         log(`${Me.metadata.name}: Removing Auth Menu`);
         auth_SubItem.destroy();
         auth_SubItem = null;
-        auth_SubItem = new popupMenu.PopupSubMenuMenuItem('Auth Settings');
     }
 
     if (display_gdm != old_display_gdm && !display_gdm) {
         log(`${Me.metadata.name}: Removing GDM Menu`);
         gdm_SubItem.destroy();
         gdm_SubItem = null;
-        gdm_SubItem = new popupMenu.PopupSubMenuMenuItem('GDM Settings');
     }
 
     if (display_tools != old_display_tools && !display_tools) {
         log(`${Me.metadata.name}: Removing Tools Menu`);
         tools_SubItem.destroy();
         tools_SubItem = null;
-        tools_SubItem = new popupMenu.PopupSubMenuMenuItem('Launch Tools');
     }
-*/
+
     old_display_auth = display_auth;
     old_display_gdm = display_gdm;
     old_display_tools = display_tools;
@@ -167,6 +165,7 @@ class YubIcon extends panelMenu.Button {
 
 //create the menu for editing /etc/pam.d/*-auth
 function createAuthMenu(){
+    auth_SubItem = new popupMenu.PopupSubMenuMenuItem('Auth Settings');
     //Switch Item to un/comment the line in the config file
     const auth_Toggle = new popupMenu.PopupSwitchMenuItem('Auth', 'Auth');
     //Set the State of the Item based on the state of the config file
@@ -195,6 +194,7 @@ function createAuthMenu(){
 
 //create the menu for editing /etc/pam.d/gdm-password
 function createGdmMenu(){
+    gdm_SubItem = new popupMenu.PopupSubMenuMenuItem('GDM Settings');
     //Switch Item to un/comment the line in the config file
     const gdm_Toggle =  new popupMenu.PopupSwitchMenuItem('GDM','GDM');
     //Set the State of the Item based on the state of the config file
@@ -222,6 +222,7 @@ function createGdmMenu(){
 
 //create the menu for launching external tools
 function createToolsMenu(){
+    tools_SubItem = new popupMenu.PopupSubMenuMenuItem('Launch Tools');
     //yubikey personalizer
     var [ok, out, err, exit] = GLib.spawn_command_line_sync('/bin/bash -c "which yubikey-personalization-gui | grep /"');
     if(out.length > 0) {
